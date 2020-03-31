@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class QueryBuilderComponent implements OnInit {
 
-  @Input() group:any;
+  @Input() group: any;
 
   constructor() { }
   operators = [
@@ -33,15 +33,16 @@ export class QueryBuilderComponent implements OnInit {
   ];
 
   ngOnInit() {
-    
+
   }
 
 
-  addCondition() {    
+  addCondition() {
     this.group.rules.push({
       condition: '+',
       lfield: 'Firstname',
       rfield: 'Firstname',
+      operator: '+'
     });
   };
 

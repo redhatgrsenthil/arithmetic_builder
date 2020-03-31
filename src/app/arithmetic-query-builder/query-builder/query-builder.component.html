@@ -1,26 +1,21 @@
-<div class="alert alert-warning alert-group">
-        <div class="form-inline">
-            <select  [(ngModel)]="group.operator" class="form-control input-sm">
-                <option *ngFor="let operator of operators">{{operator.name}}</option>
-            </select> 
-            <button style="margin-left: 5px" (click)="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Condition</button>
-            <button style="margin-left: 5px" (click)="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Group</button>
-            <button style="margin-left: 5px" (click)="removeGroup()" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Remove Group</button>
-        </div>
+<div class="alert alert-warning alert-group">        
          <div class="group-conditions">
-            <div *ngFor="let rule of group.rules" class="condition">
-                {{rule.hasOwnProperty('group')}}
+             <!-- <button style="margin-left: 5px;margin-bottom: 10px" (click)="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Group</button>
+             <button style="margin-left: 5px;margin-bottom: 10px" (click)="removeGroup()" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Remove Group</button> -->
+
+            <div *ngFor="let rule of group.rules;let i = index" class="condition">  
+                <br>              
                 <div [ngSwitch]="rule.hasOwnProperty('group')">
                     <div *ngSwitchCase="true">
                         <query-builder [group]="rule.group"></query-builder>
                     </div>
-                    <div *ngSwitchCase="false">sd
+                    <div *ngSwitchCase="false">
                         <div class="form-inline">
                             <select [(ngModel)]="rule.lfield" class="form-control input-sm">
                                 <option *ngFor="let lt of fields">{{lt.name}}</option>
                             </select>
                             <input *ngIf="false" [(ngModel)]="rule.lfield" style="margin-left: 5px" type="text" [(ngModel)]="rule.data" class="form-control input-sm"/>
-                            <select style="margin-left: 5px"  [(ngModel)]="rule.condition" class="form-control input-sm">                                
+                            <select style="margin-left: 5px;margin-right:5px"  [(ngModel)]="rule.condition" class="form-control input-sm">                                
                                 <option *ngFor="let c of conditions">{{c.name}}</option>
                             </select>
                             <select [(ngModel)]="rule.rfield" class="form-control input-sm">
@@ -31,9 +26,17 @@
                             
                             <button style="margin-left: 5px" (click)="removeCondition($index)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
                         </div>
+                        <div class="form-inline" style="margin-top:10px">
+                            <select  [(ngModel)]="rule.operator" class="form-control input-sm">
+                                <option *ngFor="let operator of operators">{{operator.name}}</option>
+                            </select>                             
+                            
+                        </div>
                     </div>
                 </div>
             </div>
+            <br>
+            <button   style="margin-left: 5px" (click)="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span></button>
         </div>
  </div>
 
