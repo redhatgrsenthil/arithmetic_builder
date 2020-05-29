@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ifw-select';
+  alert = {
+		message: 'Demo',
+		messages: [],
+		severity: 'info',
+		visible: false,
+	}
 }
